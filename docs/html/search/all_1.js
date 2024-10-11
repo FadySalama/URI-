@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['componenttostring_0',['ComponentToString',['../classuripp_1_1_uri.html#af56da10f552da5a60a5a1ec524162eea',1,'uripp::Uri::ComponentToString(absolute_uri_components comp)'],['../classuripp_1_1_uri.html#a4325e01fe353aeb3fee177ae62323f11',1,'uripp::Uri::ComponentToString(relative_uri_components comp)'],['../classuripp_1_1_uri.html#abb96986a10b9d2b3dd83a2e9869487b0',1,'uripp::Uri::ComponentToString(authority_components comp)']]]
+  ['build_0',['build',['../classuripp_1_1_uri_builder.html#ade64c71d0d8204ececf15c7547a419a2',1,'uripp::UriBuilder::build(UriBuilderConfig config)'],['../classuripp_1_1_uri_builder.html#a0e6bcf95e8292c78f2c1f6e09ffa1926',1,'uripp::UriBuilder::build(std::map&lt; UriBuilderConfig::config_uri_parameters, std::string &gt; configMap, bool is_hierarchical=true, char non_hierarchical_delimiter=&apos;:&apos;, char query_delimiter=&apos;,&apos;)']]]
 ];

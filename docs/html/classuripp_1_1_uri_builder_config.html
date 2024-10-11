@@ -90,6 +90,8 @@ $(function(){ initResizable(false); });
 <div id="doc-content">
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classuripp_1_1_uri_builder_config-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">uripp::UriBuilderConfig Class Reference</div></div>
@@ -101,6 +103,34 @@ $(function(){ initResizable(false); });
 
 <p><code>#include &lt;<a class="el" href="uri_8hpp_source.html">uri.hpp</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a659bf7fea896f6b9c2414bd1563b23f0" id="r_a659bf7fea896f6b9c2414bd1563b23f0"><td class="memItemLeft" align="right" valign="top"><a id="a659bf7fea896f6b9c2414bd1563b23f0" name="a659bf7fea896f6b9c2414bd1563b23f0"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><b>config_uri_parameters</b> { <br />
+&#160;&#160;<b>scheme</b>
+, <b>authority</b>
+, <b>path</b>
+, <b>query</b>
+, <br />
+&#160;&#160;<b>fragment</b>
+, <b>username</b>
+, <b>password</b>
+, <b>host</b>
+, <br />
+&#160;&#160;<b>port</b>
+<br />
+ }</td></tr>
+<tr class="separator:a659bf7fea896f6b9c2414bd1563b23f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a2f4a1944428979dcbfc4885e970b6be3" id="r_a2f4a1944428979dcbfc4885e970b6be3"><td class="memItemLeft" align="right" valign="top"><a id="a2f4a1944428979dcbfc4885e970b6be3" name="a2f4a1944428979dcbfc4885e970b6be3"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>UriBuilderConfig</b> ()</td></tr>
+<tr class="memdesc:a2f4a1944428979dcbfc4885e970b6be3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classuripp_1_1_uri_builder_config.html" title="A class for specifying all configurations for building a URI.">UriBuilderConfig</a> object. <br /></td></tr>
+<tr class="separator:a2f4a1944428979dcbfc4885e970b6be3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24c0b78791d3d2110a0e9967f313a0ff" id="r_a24c0b78791d3d2110a0e9967f313a0ff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24c0b78791d3d2110a0e9967f313a0ff">UriBuilderConfig</a> (std::map&lt; config_uri_parameters, std::string &gt; configMap, bool is_hierarchical=true, char non_hierarchical_delimiter=':', char query_delimiter=',')</td></tr>
+<tr class="memdesc:a24c0b78791d3d2110a0e9967f313a0ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classuripp_1_1_uri.html" title="A class representing an absolute or relative Uri and its components.">Uri</a> Builder Config object using mapping.  <br /></td></tr>
+<tr class="separator:a24c0b78791d3d2110a0e9967f313a0ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:acbe55dac0375e06d3077c203cf39dcf7" id="r_acbe55dac0375e06d3077c203cf39dcf7"><td class="memItemLeft" align="right" valign="top"><a id="acbe55dac0375e06d3077c203cf39dcf7" name="acbe55dac0375e06d3077c203cf39dcf7"></a>
@@ -142,7 +172,58 @@ char&#160;</td><td class="memItemRight" valign="bottom"><b>query_delimiter</b> =
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A class for specifying all configurations for building a URI. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a24c0b78791d3d2110a0e9967f313a0ff" name="a24c0b78791d3d2110a0e9967f313a0ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24c0b78791d3d2110a0e9967f313a0ff">&#9670;&#160;</a></span>UriBuilderConfig()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uripp::UriBuilderConfig::UriBuilderConfig </td>
+          <td>(</td>
+          <td class="paramtype">std::map&lt; config_uri_parameters, std::string &gt;</td>          <td class="paramname"><span class="paramname"><em>configMap</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>is_hierarchical</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>non_hierarchical_delimiter</em></span><span class="paramdefsep"> = </span><span class="paramdefval">':'</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>query_delimiter</em></span><span class="paramdefsep"> = </span><span class="paramdefval">','</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="classuripp_1_1_uri.html" title="A class representing an absolute or relative Uri and its components.">Uri</a> Builder Config object using mapping. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">configMap</td><td></td></tr>
+    <tr><td class="paramname">is_hierarchical</td><td>indicates if a <a class="el" href="classuripp_1_1_uri.html" title="A class representing an absolute or relative Uri and its components.">Uri</a> is hierarchical or not; default true </td></tr>
+    <tr><td class="paramname">non_hierarchical_delimiter</td><td>specifies non-hierarchical path delimiter; default ':' </td></tr>
+    <tr><td class="paramname">query_delimiter</td><td>specifies query delimiter; default ',' </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/<a class="el" href="uri_8hpp_source.html">uri.hpp</a></li>
 </ul>
 </div><!-- contents -->

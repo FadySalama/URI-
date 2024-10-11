@@ -40,6 +40,9 @@ enum class \mbox{\hyperlink{classuripp_1_1_uri_aca716fe7a615cd876b125f8c6ad753a2
 \item 
 \mbox{\hyperlink{classuripp_1_1_uri_aa6a0a5d03482efc1748a9d267b94bbfe}{Uri}} (std\+::string href)
 \begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classuripp_1_1_uri}{Uri} object. \end{DoxyCompactList}\item 
+\Hypertarget{classuripp_1_1_uri_aa92a26766bdcb64bdf1bcebf91c6c656}\label{classuripp_1_1_uri_aa92a26766bdcb64bdf1bcebf91c6c656} 
+{\bfseries Uri} (const \mbox{\hyperlink{classuripp_1_1_uri}{Uri}} \&other)
+\item 
 const std\+::string \mbox{\hyperlink{classuripp_1_1_uri_a035b74aeae8ca0f51a0d10226b5351c0}{get\+Href}} ()
 \begin{DoxyCompactList}\small\item\em Get the Href string. \end{DoxyCompactList}\item 
 const std\+::string \mbox{\hyperlink{classuripp_1_1_uri_a7643851be79a30715673f0a39a9b950d}{get\+Scheme}} ()
@@ -89,6 +92,11 @@ static std\+::string \mbox{\hyperlink{classuripp_1_1_uri_a4325e01fe353aeb3fee177
 \begin{DoxyCompactList}\small\item\em returns string representation of the corresponding relative URI component \end{DoxyCompactList}\item 
 static std\+::string \mbox{\hyperlink{classuripp_1_1_uri_abb96986a10b9d2b3dd83a2e9869487b0}{Component\+To\+String}} (\mbox{\hyperlink{classuripp_1_1_uri_aca716fe7a615cd876b125f8c6ad753a2}{authority\+\_\+components}} comp)
 \begin{DoxyCompactList}\small\item\em returns string representation of the corresponding Authority component \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{classuripp_1_1_uri_ad90182d20f87e575cf3465229d94fa99}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classuripp_1_1_uri}{Uri}} \&uri)
+\begin{DoxyCompactList}\small\item\em \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} Operator overload \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -490,6 +498,29 @@ Indicates if the URI is relative.
 true if relative URI 
 
 false if absolute URI 
+\end{DoxyReturn}
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classuripp_1_1_uri_ad90182d20f87e575cf3465229d94fa99}\index{uripp::Uri@{uripp::Uri}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!uripp::Uri@{uripp::Uri}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_ad90182d20f87e575cf3465229d94fa99} 
+std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os}{, }\item[{const \mbox{\hyperlink{classuripp_1_1_uri}{Uri}} \&}]{uri}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} Operator overload 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & output stream \\
+\hline
+{\em uri} & \doxylink{classuripp_1_1_uri}{Uri} object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::ostream\& output stream with added href 
 \end{DoxyReturn}
 
 

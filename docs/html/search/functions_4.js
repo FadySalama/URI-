@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['uri_0',['Uri',['../classuripp_1_1_uri.html#aa6a0a5d03482efc1748a9d267b94bbfe',1,'uripp::Uri']]]
+  ['isrelativeuri_0',['isRelativeUri',['../classuripp_1_1_uri.html#a350423cb53f2a9841ef824754ee20b4b',1,'uripp::Uri']]]
 ];

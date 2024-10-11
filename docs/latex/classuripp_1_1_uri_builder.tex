@@ -12,13 +12,59 @@ A class for building a URI.
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classuripp_1_1_uri_builder_ade64c71d0d8204ececf15c7547a419a2}\label{classuripp_1_1_uri_builder_ade64c71d0d8204ececf15c7547a419a2} 
-static \mbox{\hyperlink{classuripp_1_1_uri}{Uri}} \texorpdfstring{$\ast$}{*} {\bfseries build} (\mbox{\hyperlink{classuripp_1_1_uri_builder_config}{Uri\+Builder\+Config}} config)
-\end{DoxyCompactItemize}
+static \mbox{\hyperlink{classuripp_1_1_uri}{Uri}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classuripp_1_1_uri_builder_ade64c71d0d8204ececf15c7547a419a2}{build}} (\mbox{\hyperlink{classuripp_1_1_uri_builder_config}{Uri\+Builder\+Config}} config)
+\begin{DoxyCompactList}\small\item\em builds a \doxylink{classuripp_1_1_uri}{Uri} object using a \doxylink{classuripp_1_1_uri_builder_config}{Uri\+Builder\+Config} and return a pointer to it \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classuripp_1_1_uri}{Uri}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classuripp_1_1_uri_builder_a0e6bcf95e8292c78f2c1f6e09ffa1926}{build}} (std\+::map$<$ Uri\+Builder\+Config\+::config\+\_\+uri\+\_\+parameters, std\+::string $>$ config\+Map, bool is\+\_\+hierarchical=true, char non\+\_\+hierarchical\+\_\+delimiter=\textquotesingle{}\+:\textquotesingle{}, char query\+\_\+delimiter=\textquotesingle{},\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em builds a \doxylink{classuripp_1_1_uri}{Uri} object using a configuration map and return a pointer to it \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 A class for building a URI. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classuripp_1_1_uri_builder_a0e6bcf95e8292c78f2c1f6e09ffa1926}\index{uripp::UriBuilder@{uripp::UriBuilder}!build@{build}}
+\index{build@{build}!uripp::UriBuilder@{uripp::UriBuilder}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_builder_a0e6bcf95e8292c78f2c1f6e09ffa1926} 
+static \mbox{\hyperlink{classuripp_1_1_uri}{Uri}} \texorpdfstring{$\ast$}{*} uripp\+::\+Uri\+Builder\+::build (\begin{DoxyParamCaption}\item[{std\+::map$<$ Uri\+Builder\+Config\+::config\+\_\+uri\+\_\+parameters, std\+::string $>$}]{config\+Map}{, }\item[{bool}]{is\+\_\+hierarchical}{ = {\ttfamily true}, }\item[{char}]{non\+\_\+hierarchical\+\_\+delimiter}{ = {\ttfamily \textquotesingle{}\+:\textquotesingle{}}, }\item[{char}]{query\+\_\+delimiter}{ = {\ttfamily \textquotesingle{},\textquotesingle{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+builds a \doxylink{classuripp_1_1_uri}{Uri} object using a configuration map and return a pointer to it 
+
+
+\begin{DoxyParams}{Parameters}
+{\em config\+Map} & configuration map \\
+\hline
+{\em is\+\_\+hierarchical} & indicates if a \doxylink{classuripp_1_1_uri}{Uri} is hierarchical or not; default true \\
+\hline
+{\em non\+\_\+hierarchical\+\_\+delimiter} & specifies non-\/hierarchical path delimiter; default \textquotesingle{}\+:\textquotesingle{} \\
+\hline
+{\em query\+\_\+delimiter} & specifies query delimiter; default \textquotesingle{},\textquotesingle{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Uri\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+\Hypertarget{classuripp_1_1_uri_builder_ade64c71d0d8204ececf15c7547a419a2}\index{uripp::UriBuilder@{uripp::UriBuilder}!build@{build}}
+\index{build@{build}!uripp::UriBuilder@{uripp::UriBuilder}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_builder_ade64c71d0d8204ececf15c7547a419a2} 
+static \mbox{\hyperlink{classuripp_1_1_uri}{Uri}} \texorpdfstring{$\ast$}{*} uripp\+::\+Uri\+Builder\+::build (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classuripp_1_1_uri_builder_config}{Uri\+Builder\+Config}}}]{config}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+builds a \doxylink{classuripp_1_1_uri}{Uri} object using a \doxylink{classuripp_1_1_uri_builder_config}{Uri\+Builder\+Config} and return a pointer to it 
+
+
+\begin{DoxyParams}{Parameters}
+{\em config} & configuration of \doxylink{classuripp_1_1_uri}{Uri} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Uri\texorpdfstring{$\ast$}{*} pointer to \doxylink{classuripp_1_1_uri}{Uri} object 
+\end{DoxyReturn}
+
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

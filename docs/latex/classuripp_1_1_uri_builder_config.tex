@@ -9,6 +9,32 @@ A class for specifying all configurations for building a URI.
 
 {\ttfamily \#include $<$uri.\+hpp$>$}
 
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classuripp_1_1_uri_builder_config_a659bf7fea896f6b9c2414bd1563b23f0}\label{classuripp_1_1_uri_builder_config_a659bf7fea896f6b9c2414bd1563b23f0} 
+enum class {\bfseries config\+\_\+uri\+\_\+parameters} \{ \newline
+{\bfseries scheme}
+, {\bfseries authority}
+, {\bfseries path}
+, {\bfseries query}
+, \newline
+{\bfseries fragment}
+, {\bfseries username}
+, {\bfseries password}
+, {\bfseries host}
+, \newline
+{\bfseries port}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classuripp_1_1_uri_builder_config_a2f4a1944428979dcbfc4885e970b6be3}\label{classuripp_1_1_uri_builder_config_a2f4a1944428979dcbfc4885e970b6be3} 
+{\bfseries Uri\+Builder\+Config} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classuripp_1_1_uri_builder_config}{Uri\+Builder\+Config} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classuripp_1_1_uri_builder_config_a24c0b78791d3d2110a0e9967f313a0ff}{Uri\+Builder\+Config}} (std\+::map$<$ config\+\_\+uri\+\_\+parameters, std\+::string $>$ config\+Map, bool is\+\_\+hierarchical=true, char non\+\_\+hierarchical\+\_\+delimiter=\textquotesingle{}\+:\textquotesingle{}, char query\+\_\+delimiter=\textquotesingle{},\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classuripp_1_1_uri}{Uri} Builder Config object using mapping. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -52,6 +78,30 @@ char {\bfseries query\+\_\+delimiter} = \textquotesingle{},\textquotesingle{}
 
 \doxysubsection{Detailed Description}
 A class for specifying all configurations for building a URI. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classuripp_1_1_uri_builder_config_a24c0b78791d3d2110a0e9967f313a0ff}\index{uripp::UriBuilderConfig@{uripp::UriBuilderConfig}!UriBuilderConfig@{UriBuilderConfig}}
+\index{UriBuilderConfig@{UriBuilderConfig}!uripp::UriBuilderConfig@{uripp::UriBuilderConfig}}
+\doxysubsubsection{\texorpdfstring{UriBuilderConfig()}{UriBuilderConfig()}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_builder_config_a24c0b78791d3d2110a0e9967f313a0ff} 
+uripp\+::\+Uri\+Builder\+Config\+::\+Uri\+Builder\+Config (\begin{DoxyParamCaption}\item[{std\+::map$<$ config\+\_\+uri\+\_\+parameters, std\+::string $>$}]{config\+Map}{, }\item[{bool}]{is\+\_\+hierarchical}{ = {\ttfamily true}, }\item[{char}]{non\+\_\+hierarchical\+\_\+delimiter}{ = {\ttfamily \textquotesingle{}\+:\textquotesingle{}}, }\item[{char}]{query\+\_\+delimiter}{ = {\ttfamily \textquotesingle{},\textquotesingle{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \doxylink{classuripp_1_1_uri}{Uri} Builder Config object using mapping. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em config\+Map} & \\
+\hline
+{\em is\+\_\+hierarchical} & indicates if a \doxylink{classuripp_1_1_uri}{Uri} is hierarchical or not; default true \\
+\hline
+{\em non\+\_\+hierarchical\+\_\+delimiter} & specifies non-\/hierarchical path delimiter; default \textquotesingle{}\+:\textquotesingle{} \\
+\hline
+{\em query\+\_\+delimiter} & specifies query delimiter; default \textquotesingle{},\textquotesingle{} \\
+\hline
+\end{DoxyParams}
+
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
