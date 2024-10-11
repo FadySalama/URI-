@@ -1,0 +1,498 @@
+\doxysection{uripp\+::Uri Class Reference}
+\hypertarget{classuripp_1_1_uri}{}\label{classuripp_1_1_uri}\index{uripp::Uri@{uripp::Uri}}
+
+
+A class representing an absolute or relative \doxylink{classuripp_1_1_uri}{Uri} and its components.  
+
+
+
+
+{\ttfamily \#include $<$uri.\+hpp$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classuripp_1_1_uri_a5c53ba5f147cb78467c4a424102e9979}\label{classuripp_1_1_uri_a5c53ba5f147cb78467c4a424102e9979} 
+enum class \mbox{\hyperlink{classuripp_1_1_uri_a5c53ba5f147cb78467c4a424102e9979}{absolute\+\_\+uri\+\_\+components}} \{ \newline
+{\bfseries scheme}
+, {\bfseries authority}
+, {\bfseries path}
+, {\bfseries query}
+, \newline
+{\bfseries fragment}
+ \}
+\begin{DoxyCompactList}\small\item\em An enum for the different components in an absolute URI. \end{DoxyCompactList}\item 
+\Hypertarget{classuripp_1_1_uri_ae7cc6b9aa7cedb30e4fb4330f7b53d41}\label{classuripp_1_1_uri_ae7cc6b9aa7cedb30e4fb4330f7b53d41} 
+enum class \mbox{\hyperlink{classuripp_1_1_uri_ae7cc6b9aa7cedb30e4fb4330f7b53d41}{relative\+\_\+uri\+\_\+components}} \{ {\bfseries path}
+, {\bfseries query}
+, {\bfseries fragment}
+ \}
+\begin{DoxyCompactList}\small\item\em An enum for the different components in a relative URI. \end{DoxyCompactList}\item 
+\Hypertarget{classuripp_1_1_uri_aca716fe7a615cd876b125f8c6ad753a2}\label{classuripp_1_1_uri_aca716fe7a615cd876b125f8c6ad753a2} 
+enum class \mbox{\hyperlink{classuripp_1_1_uri_aca716fe7a615cd876b125f8c6ad753a2}{authority\+\_\+components}} \{ {\bfseries username}
+, {\bfseries password}
+, {\bfseries host}
+, {\bfseries port}
+ \}
+\begin{DoxyCompactList}\small\item\em An enum for the different components of the Authority URI component. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classuripp_1_1_uri_aa6a0a5d03482efc1748a9d267b94bbfe}{Uri}} (std\+::string href)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classuripp_1_1_uri}{Uri} object. \end{DoxyCompactList}\item 
+const std\+::string \mbox{\hyperlink{classuripp_1_1_uri_a035b74aeae8ca0f51a0d10226b5351c0}{get\+Href}} ()
+\begin{DoxyCompactList}\small\item\em Get the Href string. \end{DoxyCompactList}\item 
+const std\+::string \mbox{\hyperlink{classuripp_1_1_uri_a7643851be79a30715673f0a39a9b950d}{get\+Scheme}} ()
+\begin{DoxyCompactList}\small\item\em Get the Scheme component of absolute URI. \end{DoxyCompactList}\item 
+const std\+::string \mbox{\hyperlink{classuripp_1_1_uri_afe01dda055f72b8875a2987b5bfb64fb}{get\+Authority}} ()
+\begin{DoxyCompactList}\small\item\em Get the Authority component of absolute URI. \end{DoxyCompactList}\item 
+const std\+::string \mbox{\hyperlink{classuripp_1_1_uri_ad124827d164a6cc7f0a8383af0dfc57d}{get\+Path}} ()
+\begin{DoxyCompactList}\small\item\em Get the Path object. \end{DoxyCompactList}\item 
+const std\+::string \mbox{\hyperlink{classuripp_1_1_uri_aea0db1be26ffce665c9187403824c358}{get\+Query}} ()
+\begin{DoxyCompactList}\small\item\em Get the Query component of the absolute or relative URI. \end{DoxyCompactList}\item 
+const std\+::string \mbox{\hyperlink{classuripp_1_1_uri_ac3629bc4e866123891074f77b2396d36}{get\+Fragment}} ()
+\begin{DoxyCompactList}\small\item\em Get the Fragment component of the absolute or relative URI. \end{DoxyCompactList}\item 
+std\+::map$<$ \mbox{\hyperlink{classuripp_1_1_uri_a5c53ba5f147cb78467c4a424102e9979}{absolute\+\_\+uri\+\_\+components}}, std\+::string $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classuripp_1_1_uri_a1813aa80e5c0ce48b05ba1d304622cc0}{get\+URIComponents}} ()
+\begin{DoxyCompactList}\small\item\em Get a map containing all components of the absolute URI. \end{DoxyCompactList}\item 
+std\+::map$<$ \mbox{\hyperlink{classuripp_1_1_uri_ae7cc6b9aa7cedb30e4fb4330f7b53d41}{relative\+\_\+uri\+\_\+components}}, std\+::string $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classuripp_1_1_uri_aac39fbad03ec3edc71f346bbcee2598b}{get\+Relative\+URIComponents}} ()
+\begin{DoxyCompactList}\small\item\em Get a map containing all components of the relative URI. \end{DoxyCompactList}\item 
+const std\+::string \mbox{\hyperlink{classuripp_1_1_uri_adb09fc51ab2bf696d7a4a10148a45200}{get\+Username}} ()
+\begin{DoxyCompactList}\small\item\em Get the Username component of the Authority component. \end{DoxyCompactList}\item 
+const std\+::string \mbox{\hyperlink{classuripp_1_1_uri_ab117cf0c22f20503b48ff3b89342c5fb}{get\+Password}} ()
+\begin{DoxyCompactList}\small\item\em Get the Password component of the Authority component. \end{DoxyCompactList}\item 
+const std\+::string \mbox{\hyperlink{classuripp_1_1_uri_a5c3d000943c11338ae3d7711504ec622}{get\+Host}} ()
+\begin{DoxyCompactList}\small\item\em Get the Host component of the Authority component. \end{DoxyCompactList}\item 
+const std\+::string \mbox{\hyperlink{classuripp_1_1_uri_a9cf05497eaa3ed45059dbf719a1fdf43}{get\+Port}} ()
+\begin{DoxyCompactList}\small\item\em Get the Port component of the Authority component. \end{DoxyCompactList}\item 
+std\+::map$<$ \mbox{\hyperlink{classuripp_1_1_uri_aca716fe7a615cd876b125f8c6ad753a2}{authority\+\_\+components}}, std\+::string $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classuripp_1_1_uri_afa66d1a3397892214b3c3cca7b31c9d8}{get\+Authority\+Components}} ()
+\begin{DoxyCompactList}\small\item\em Get a map containing all components of the relative URI. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classuripp_1_1_uri_ae01437950bf19fb945823b33e65ba895}{has\+Authority}} ()
+\begin{DoxyCompactList}\small\item\em Indicates if absolute URI has a Authority component. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classuripp_1_1_uri_a0107bcfb9b6ed50aff279e730baff69b}{has\+Query}} ()
+\begin{DoxyCompactList}\small\item\em Indicates if the relative or absolute URI has a Query component. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classuripp_1_1_uri_a79c077349d433a2b457041afe141e9a5}{has\+Fragment}} ()
+\begin{DoxyCompactList}\small\item\em Indicates if the relative or absolute URI has a Fragment component. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classuripp_1_1_uri_a8588ce62ec219fe9ef55b5961f07afeb}{has\+Username}} ()
+\begin{DoxyCompactList}\small\item\em Indicates if the URI has a username in the Authority component. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classuripp_1_1_uri_a873974ed8ff0006b6cbb4ed4a3e8e077}{has\+Password}} ()
+\begin{DoxyCompactList}\small\item\em Indicates if the URI has a password in the Authority component. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classuripp_1_1_uri_adf0b1d0f415f101db3ebdfbe39c04e6d}{has\+Port}} ()
+\begin{DoxyCompactList}\small\item\em Indicates if the URI has a port in the Authority component. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classuripp_1_1_uri_a350423cb53f2a9841ef824754ee20b4b}{is\+Relative\+Uri}} ()
+\begin{DoxyCompactList}\small\item\em Indicates if the URI is relative. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{classuripp_1_1_uri_af56da10f552da5a60a5a1ec524162eea}{Component\+To\+String}} (\mbox{\hyperlink{classuripp_1_1_uri_a5c53ba5f147cb78467c4a424102e9979}{absolute\+\_\+uri\+\_\+components}} comp)
+\begin{DoxyCompactList}\small\item\em returns string representation of the corresponding absolute URI component \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classuripp_1_1_uri_a4325e01fe353aeb3fee177ae62323f11}{Component\+To\+String}} (\mbox{\hyperlink{classuripp_1_1_uri_ae7cc6b9aa7cedb30e4fb4330f7b53d41}{relative\+\_\+uri\+\_\+components}} comp)
+\begin{DoxyCompactList}\small\item\em returns string representation of the corresponding relative URI component \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classuripp_1_1_uri_abb96986a10b9d2b3dd83a2e9869487b0}{Component\+To\+String}} (\mbox{\hyperlink{classuripp_1_1_uri_aca716fe7a615cd876b125f8c6ad753a2}{authority\+\_\+components}} comp)
+\begin{DoxyCompactList}\small\item\em returns string representation of the corresponding Authority component \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class representing an absolute or relative \doxylink{classuripp_1_1_uri}{Uri} and its components. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classuripp_1_1_uri_aa6a0a5d03482efc1748a9d267b94bbfe}\index{uripp::Uri@{uripp::Uri}!Uri@{Uri}}
+\index{Uri@{Uri}!uripp::Uri@{uripp::Uri}}
+\doxysubsubsection{\texorpdfstring{Uri()}{Uri()}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_aa6a0a5d03482efc1748a9d267b94bbfe} 
+uripp\+::\+Uri\+::\+Uri (\begin{DoxyParamCaption}\item[{std\+::string}]{href}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \doxylink{classuripp_1_1_uri}{Uri} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em href} & URI string \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & if cannot parse URI or Authority component of absolute URI \\
+\hline
+\end{DoxyExceptions}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classuripp_1_1_uri_af56da10f552da5a60a5a1ec524162eea}\index{uripp::Uri@{uripp::Uri}!ComponentToString@{ComponentToString}}
+\index{ComponentToString@{ComponentToString}!uripp::Uri@{uripp::Uri}}
+\doxysubsubsection{\texorpdfstring{ComponentToString()}{ComponentToString()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_af56da10f552da5a60a5a1ec524162eea} 
+static std\+::string uripp\+::\+Uri\+::\+Component\+To\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classuripp_1_1_uri_a5c53ba5f147cb78467c4a424102e9979}{absolute\+\_\+uri\+\_\+components}}}]{comp}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+returns string representation of the corresponding absolute URI component 
+
+
+\begin{DoxyParams}{Parameters}
+{\em comp} & absolute\+\_\+uri\+\_\+components representation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string one of "{}scheme"{}, authority"{}, "{}path"{}, "{}query"{}, "{}fragment"{} 
+\end{DoxyReturn}
+\Hypertarget{classuripp_1_1_uri_abb96986a10b9d2b3dd83a2e9869487b0}\index{uripp::Uri@{uripp::Uri}!ComponentToString@{ComponentToString}}
+\index{ComponentToString@{ComponentToString}!uripp::Uri@{uripp::Uri}}
+\doxysubsubsection{\texorpdfstring{ComponentToString()}{ComponentToString()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_abb96986a10b9d2b3dd83a2e9869487b0} 
+static std\+::string uripp\+::\+Uri\+::\+Component\+To\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classuripp_1_1_uri_aca716fe7a615cd876b125f8c6ad753a2}{authority\+\_\+components}}}]{comp}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+returns string representation of the corresponding Authority component 
+
+
+\begin{DoxyParams}{Parameters}
+{\em comp} & authority\+\_\+components representation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string one of "{}username"{}, "{}password"{}, "{}host"{}, "{}port"{} 
+\end{DoxyReturn}
+\Hypertarget{classuripp_1_1_uri_a4325e01fe353aeb3fee177ae62323f11}\index{uripp::Uri@{uripp::Uri}!ComponentToString@{ComponentToString}}
+\index{ComponentToString@{ComponentToString}!uripp::Uri@{uripp::Uri}}
+\doxysubsubsection{\texorpdfstring{ComponentToString()}{ComponentToString()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_a4325e01fe353aeb3fee177ae62323f11} 
+static std\+::string uripp\+::\+Uri\+::\+Component\+To\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classuripp_1_1_uri_ae7cc6b9aa7cedb30e4fb4330f7b53d41}{relative\+\_\+uri\+\_\+components}}}]{comp}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+returns string representation of the corresponding relative URI component 
+
+
+\begin{DoxyParams}{Parameters}
+{\em comp} & relative\+\_\+uri\+\_\+components representation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string one of "{}path"{}, "{}query"{}, "{}fragment"{} 
+\end{DoxyReturn}
+\Hypertarget{classuripp_1_1_uri_afe01dda055f72b8875a2987b5bfb64fb}\index{uripp::Uri@{uripp::Uri}!getAuthority@{getAuthority}}
+\index{getAuthority@{getAuthority}!uripp::Uri@{uripp::Uri}}
+\doxysubsubsection{\texorpdfstring{getAuthority()}{getAuthority()}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_afe01dda055f72b8875a2987b5bfb64fb} 
+const std\+::string uripp\+::\+Uri\+::get\+Authority (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Authority component of absolute URI. 
+
+\begin{DoxyReturn}{Returns}
+const std\+::string Authority component 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::domain\+\_\+error} & if a relative URI \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classuripp_1_1_uri_afa66d1a3397892214b3c3cca7b31c9d8}\index{uripp::Uri@{uripp::Uri}!getAuthorityComponents@{getAuthorityComponents}}
+\index{getAuthorityComponents@{getAuthorityComponents}!uripp::Uri@{uripp::Uri}}
+\doxysubsubsection{\texorpdfstring{getAuthorityComponents()}{getAuthorityComponents()}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_afa66d1a3397892214b3c3cca7b31c9d8} 
+std\+::map$<$ \mbox{\hyperlink{classuripp_1_1_uri_aca716fe7a615cd876b125f8c6ad753a2}{authority\+\_\+components}}, std\+::string $>$ \texorpdfstring{$\ast$}{*} uripp\+::\+Uri\+::get\+Authority\+Components (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a map containing all components of the relative URI. 
+
+\begin{DoxyReturn}{Returns}
+std\+::map$<$relative\+\_\+uri\+\_\+components, std\+::string$>$\texorpdfstring{$\ast$}{*} a mapping from component ID to its string if available; otherwise a nullptr 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::domain\+\_\+error} & if relative URI \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classuripp_1_1_uri_ac3629bc4e866123891074f77b2396d36}\index{uripp::Uri@{uripp::Uri}!getFragment@{getFragment}}
+\index{getFragment@{getFragment}!uripp::Uri@{uripp::Uri}}
+\doxysubsubsection{\texorpdfstring{getFragment()}{getFragment()}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_ac3629bc4e866123891074f77b2396d36} 
+const std\+::string uripp\+::\+Uri\+::get\+Fragment (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Fragment component of the absolute or relative URI. 
+
+\begin{DoxyReturn}{Returns}
+const std\+::string the Fragment component if available; otherwise an empty string 
+\end{DoxyReturn}
+\Hypertarget{classuripp_1_1_uri_a5c3d000943c11338ae3d7711504ec622}\index{uripp::Uri@{uripp::Uri}!getHost@{getHost}}
+\index{getHost@{getHost}!uripp::Uri@{uripp::Uri}}
+\doxysubsubsection{\texorpdfstring{getHost()}{getHost()}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_a5c3d000943c11338ae3d7711504ec622} 
+const std\+::string uripp\+::\+Uri\+::get\+Host (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Host component of the Authority component. 
+
+\begin{DoxyReturn}{Returns}
+const std\+::string Host component if available; otherwise an empty string 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::domain\+\_\+error} & if URI is relative \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classuripp_1_1_uri_a035b74aeae8ca0f51a0d10226b5351c0}\index{uripp::Uri@{uripp::Uri}!getHref@{getHref}}
+\index{getHref@{getHref}!uripp::Uri@{uripp::Uri}}
+\doxysubsubsection{\texorpdfstring{getHref()}{getHref()}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_a035b74aeae8ca0f51a0d10226b5351c0} 
+const std\+::string uripp\+::\+Uri\+::get\+Href (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Href string. 
+
+\begin{DoxyReturn}{Returns}
+const std\+::string 
+\end{DoxyReturn}
+\Hypertarget{classuripp_1_1_uri_ab117cf0c22f20503b48ff3b89342c5fb}\index{uripp::Uri@{uripp::Uri}!getPassword@{getPassword}}
+\index{getPassword@{getPassword}!uripp::Uri@{uripp::Uri}}
+\doxysubsubsection{\texorpdfstring{getPassword()}{getPassword()}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_ab117cf0c22f20503b48ff3b89342c5fb} 
+const std\+::string uripp\+::\+Uri\+::get\+Password (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Password component of the Authority component. 
+
+\begin{DoxyReturn}{Returns}
+const std\+::string Password component if available; otherwise an empty string 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::domain\+\_\+error} & if URI is relative \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classuripp_1_1_uri_ad124827d164a6cc7f0a8383af0dfc57d}\index{uripp::Uri@{uripp::Uri}!getPath@{getPath}}
+\index{getPath@{getPath}!uripp::Uri@{uripp::Uri}}
+\doxysubsubsection{\texorpdfstring{getPath()}{getPath()}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_ad124827d164a6cc7f0a8383af0dfc57d} 
+const std\+::string uripp\+::\+Uri\+::get\+Path (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Path object. 
+
+\begin{DoxyReturn}{Returns}
+const std\+::string 
+\end{DoxyReturn}
+\Hypertarget{classuripp_1_1_uri_a9cf05497eaa3ed45059dbf719a1fdf43}\index{uripp::Uri@{uripp::Uri}!getPort@{getPort}}
+\index{getPort@{getPort}!uripp::Uri@{uripp::Uri}}
+\doxysubsubsection{\texorpdfstring{getPort()}{getPort()}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_a9cf05497eaa3ed45059dbf719a1fdf43} 
+const std\+::string uripp\+::\+Uri\+::get\+Port (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Port component of the Authority component. 
+
+\begin{DoxyReturn}{Returns}
+const std\+::string Port component if available; otherwise an empty string 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::domain\+\_\+error} & if URI is relative \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classuripp_1_1_uri_aea0db1be26ffce665c9187403824c358}\index{uripp::Uri@{uripp::Uri}!getQuery@{getQuery}}
+\index{getQuery@{getQuery}!uripp::Uri@{uripp::Uri}}
+\doxysubsubsection{\texorpdfstring{getQuery()}{getQuery()}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_aea0db1be26ffce665c9187403824c358} 
+const std\+::string uripp\+::\+Uri\+::get\+Query (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Query component of the absolute or relative URI. 
+
+\begin{DoxyReturn}{Returns}
+const std\+::string the Query component if available; otherwise an empty string 
+\end{DoxyReturn}
+\Hypertarget{classuripp_1_1_uri_aac39fbad03ec3edc71f346bbcee2598b}\index{uripp::Uri@{uripp::Uri}!getRelativeURIComponents@{getRelativeURIComponents}}
+\index{getRelativeURIComponents@{getRelativeURIComponents}!uripp::Uri@{uripp::Uri}}
+\doxysubsubsection{\texorpdfstring{getRelativeURIComponents()}{getRelativeURIComponents()}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_aac39fbad03ec3edc71f346bbcee2598b} 
+std\+::map$<$ \mbox{\hyperlink{classuripp_1_1_uri_ae7cc6b9aa7cedb30e4fb4330f7b53d41}{relative\+\_\+uri\+\_\+components}}, std\+::string $>$ \texorpdfstring{$\ast$}{*} uripp\+::\+Uri\+::get\+Relative\+URIComponents (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a map containing all components of the relative URI. 
+
+\begin{DoxyReturn}{Returns}
+std\+::map$<$relative\+\_\+uri\+\_\+components, std\+::string$>$\texorpdfstring{$\ast$}{*} a mapping from component ID to its string 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::domain\+\_\+error} & if URI is absolute \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classuripp_1_1_uri_a7643851be79a30715673f0a39a9b950d}\index{uripp::Uri@{uripp::Uri}!getScheme@{getScheme}}
+\index{getScheme@{getScheme}!uripp::Uri@{uripp::Uri}}
+\doxysubsubsection{\texorpdfstring{getScheme()}{getScheme()}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_a7643851be79a30715673f0a39a9b950d} 
+const std\+::string uripp\+::\+Uri\+::get\+Scheme (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Scheme component of absolute URI. 
+
+\begin{DoxyReturn}{Returns}
+const std\+::string Scheme component 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::domain\+\_\+error} & if a relative URI \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classuripp_1_1_uri_a1813aa80e5c0ce48b05ba1d304622cc0}\index{uripp::Uri@{uripp::Uri}!getURIComponents@{getURIComponents}}
+\index{getURIComponents@{getURIComponents}!uripp::Uri@{uripp::Uri}}
+\doxysubsubsection{\texorpdfstring{getURIComponents()}{getURIComponents()}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_a1813aa80e5c0ce48b05ba1d304622cc0} 
+std\+::map$<$ \mbox{\hyperlink{classuripp_1_1_uri_a5c53ba5f147cb78467c4a424102e9979}{absolute\+\_\+uri\+\_\+components}}, std\+::string $>$ \texorpdfstring{$\ast$}{*} uripp\+::\+Uri\+::get\+URIComponents (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a map containing all components of the absolute URI. 
+
+\begin{DoxyReturn}{Returns}
+std\+::map$<$absolute\+\_\+uri\+\_\+components, std\+::string$>$\texorpdfstring{$\ast$}{*} a mapping from component ID to its string 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::domain\+\_\+error} & if URI is relative \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classuripp_1_1_uri_adb09fc51ab2bf696d7a4a10148a45200}\index{uripp::Uri@{uripp::Uri}!getUsername@{getUsername}}
+\index{getUsername@{getUsername}!uripp::Uri@{uripp::Uri}}
+\doxysubsubsection{\texorpdfstring{getUsername()}{getUsername()}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_adb09fc51ab2bf696d7a4a10148a45200} 
+const std\+::string uripp\+::\+Uri\+::get\+Username (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Username component of the Authority component. 
+
+\begin{DoxyReturn}{Returns}
+const std\+::string Username component if available; otherwise an empty string 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::domain\+\_\+error} & if URI is relative \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classuripp_1_1_uri_ae01437950bf19fb945823b33e65ba895}\index{uripp::Uri@{uripp::Uri}!hasAuthority@{hasAuthority}}
+\index{hasAuthority@{hasAuthority}!uripp::Uri@{uripp::Uri}}
+\doxysubsubsection{\texorpdfstring{hasAuthority()}{hasAuthority()}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_ae01437950bf19fb945823b33e65ba895} 
+bool uripp\+::\+Uri\+::has\+Authority (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Indicates if absolute URI has a Authority component. 
+
+\begin{DoxyReturn}{Returns}
+true if the absolute URI has Authority 
+
+false if the absolute URI does not have Authority 
+\end{DoxyReturn}
+\Hypertarget{classuripp_1_1_uri_a79c077349d433a2b457041afe141e9a5}\index{uripp::Uri@{uripp::Uri}!hasFragment@{hasFragment}}
+\index{hasFragment@{hasFragment}!uripp::Uri@{uripp::Uri}}
+\doxysubsubsection{\texorpdfstring{hasFragment()}{hasFragment()}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_a79c077349d433a2b457041afe141e9a5} 
+bool uripp\+::\+Uri\+::has\+Fragment (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Indicates if the relative or absolute URI has a Fragment component. 
+
+\begin{DoxyReturn}{Returns}
+true if the relative or absolute URI has Fragment 
+
+false if the relative or absolute URI does not have Fragment 
+\end{DoxyReturn}
+\Hypertarget{classuripp_1_1_uri_a873974ed8ff0006b6cbb4ed4a3e8e077}\index{uripp::Uri@{uripp::Uri}!hasPassword@{hasPassword}}
+\index{hasPassword@{hasPassword}!uripp::Uri@{uripp::Uri}}
+\doxysubsubsection{\texorpdfstring{hasPassword()}{hasPassword()}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_a873974ed8ff0006b6cbb4ed4a3e8e077} 
+bool uripp\+::\+Uri\+::has\+Password (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Indicates if the URI has a password in the Authority component. 
+
+\begin{DoxyReturn}{Returns}
+true if Authority component contains password 
+
+false if Authority component does not contains password 
+\end{DoxyReturn}
+\Hypertarget{classuripp_1_1_uri_adf0b1d0f415f101db3ebdfbe39c04e6d}\index{uripp::Uri@{uripp::Uri}!hasPort@{hasPort}}
+\index{hasPort@{hasPort}!uripp::Uri@{uripp::Uri}}
+\doxysubsubsection{\texorpdfstring{hasPort()}{hasPort()}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_adf0b1d0f415f101db3ebdfbe39c04e6d} 
+bool uripp\+::\+Uri\+::has\+Port (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Indicates if the URI has a port in the Authority component. 
+
+\begin{DoxyReturn}{Returns}
+true if Authority component contains port 
+
+false if Authority component does not contains port 
+\end{DoxyReturn}
+\Hypertarget{classuripp_1_1_uri_a0107bcfb9b6ed50aff279e730baff69b}\index{uripp::Uri@{uripp::Uri}!hasQuery@{hasQuery}}
+\index{hasQuery@{hasQuery}!uripp::Uri@{uripp::Uri}}
+\doxysubsubsection{\texorpdfstring{hasQuery()}{hasQuery()}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_a0107bcfb9b6ed50aff279e730baff69b} 
+bool uripp\+::\+Uri\+::has\+Query (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Indicates if the relative or absolute URI has a Query component. 
+
+\begin{DoxyReturn}{Returns}
+true if the relative or absolute URI has Query 
+
+false if the relative or absolute URI does not have Query 
+\end{DoxyReturn}
+\Hypertarget{classuripp_1_1_uri_a8588ce62ec219fe9ef55b5961f07afeb}\index{uripp::Uri@{uripp::Uri}!hasUsername@{hasUsername}}
+\index{hasUsername@{hasUsername}!uripp::Uri@{uripp::Uri}}
+\doxysubsubsection{\texorpdfstring{hasUsername()}{hasUsername()}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_a8588ce62ec219fe9ef55b5961f07afeb} 
+bool uripp\+::\+Uri\+::has\+Username (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Indicates if the URI has a username in the Authority component. 
+
+\begin{DoxyReturn}{Returns}
+true if Authority component contains username 
+
+false if Authority component does not contains username 
+\end{DoxyReturn}
+\Hypertarget{classuripp_1_1_uri_a350423cb53f2a9841ef824754ee20b4b}\index{uripp::Uri@{uripp::Uri}!isRelativeUri@{isRelativeUri}}
+\index{isRelativeUri@{isRelativeUri}!uripp::Uri@{uripp::Uri}}
+\doxysubsubsection{\texorpdfstring{isRelativeUri()}{isRelativeUri()}}
+{\footnotesize\ttfamily \label{classuripp_1_1_uri_a350423cb53f2a9841ef824754ee20b4b} 
+bool uripp\+::\+Uri\+::is\+Relative\+Uri (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Indicates if the URI is relative. 
+
+\begin{DoxyReturn}{Returns}
+true if relative URI 
+
+false if absolute URI 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/uri.\+hpp\end{DoxyCompactItemize}

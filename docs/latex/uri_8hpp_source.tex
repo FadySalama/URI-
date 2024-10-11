@@ -1,0 +1,371 @@
+\doxysection{uri.\+hpp}
+\hypertarget{uri_8hpp_source}{}\label{uri_8hpp_source}\index{include/uri.hpp@{include/uri.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <regex>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }uripp\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classuripp_1_1_uri}{Uri}}\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{classuripp_1_1_uri_a5c53ba5f147cb78467c4a424102e9979}{absolute\_uri\_components}}\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ scheme,}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ authority,}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ path,}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ query,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ fragment}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{classuripp_1_1_uri_af56da10f552da5a60a5a1ec524162eea}{ComponentToString}}(\mbox{\hyperlink{classuripp_1_1_uri_a5c53ba5f147cb78467c4a424102e9979}{absolute\_uri\_components}}\ comp)\{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ strings[]\ =\ \{\textcolor{stringliteral}{"{}scheme"{}},\ \textcolor{stringliteral}{"{}authority"{}},\ \textcolor{stringliteral}{"{}path"{}},\ \textcolor{stringliteral}{"{}query"{}},\ \textcolor{stringliteral}{"{}fragment"{}}\};}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ strings[int(comp)];}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{classuripp_1_1_uri_ae7cc6b9aa7cedb30e4fb4330f7b53d41}{relative\_uri\_components}}\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ path,}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ query,}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ fragment}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{classuripp_1_1_uri_a4325e01fe353aeb3fee177ae62323f11}{ComponentToString}}(\mbox{\hyperlink{classuripp_1_1_uri_ae7cc6b9aa7cedb30e4fb4330f7b53d41}{relative\_uri\_components}}\ comp)\{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ strings[]\ =\ \{\textcolor{stringliteral}{"{}path"{}},\ \textcolor{stringliteral}{"{}query"{}},\ \textcolor{stringliteral}{"{}fragment"{}}\};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ strings[int(comp)];}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{classuripp_1_1_uri_aca716fe7a615cd876b125f8c6ad753a2}{authority\_components}}\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ username,}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ password,}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ host,}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ port}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{classuripp_1_1_uri_abb96986a10b9d2b3dd83a2e9869487b0}{ComponentToString}}(\mbox{\hyperlink{classuripp_1_1_uri_aca716fe7a615cd876b125f8c6ad753a2}{authority\_components}}\ comp)\{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ strings[]\ =\ \{\textcolor{stringliteral}{"{}username"{}},\ \textcolor{stringliteral}{"{}password"{}},\ \textcolor{stringliteral}{"{}host"{}},\ \textcolor{stringliteral}{"{}port"{}}\};}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ strings[int(comp)];}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classuripp_1_1_uri_aa6a0a5d03482efc1748a9d267b94bbfe}{Uri}}(std::string\ href)\ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>href\ =\ href;}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ std::smatch\ uri\_groups;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ is\_absolute\_uri\ =\ std::regex\_match(href,\ uri\_groups,\ uri\_regex);}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ schemeMatch\ =\ uri\_groups[2].str();}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(is\_absolute\_uri\ \&\&\ !schemeMatch.empty())\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uri\_components\_map[absolute\_uri\_components::scheme]\ =\ schemeMatch;}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ authorityMatch\ =\ uri\_groups[4].str();}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!authorityMatch.empty())\ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uri\_components\_map[absolute\_uri\_components::authority]\ =\ uri\_groups[4].str();}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ has\_authority\ =\ \textcolor{keyword}{true};\ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ pathMatch\ =\ uri\_groups[5].str();}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!pathMatch.empty())\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uri\_components\_map[absolute\_uri\_components::path]\ =\ pathMatch;}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ queryMatch\ =\ uri\_groups[7].str();}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!queryMatch.empty())\ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uri\_components\_map[absolute\_uri\_components::query]\ =\ queryMatch;}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ has\_query\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ fragmentMatch\ =\ uri\_groups[9].str();}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!fragmentMatch.empty())\ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uri\_components\_map[absolute\_uri\_components::fragment]\ =\ fragmentMatch;}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ has\_fragment\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(has\_authority)\ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::smatch\ authority\_groups;}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isValidAuthority\ =\ \ std::regex\_match(uri\_components\_map[absolute\_uri\_components::authority],\ authority\_groups,\ authority\_regex);}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!isValidAuthority)\ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}The\ authority\ component\ of\ href\ is\ not\ valid"{}});}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ userMatch\ =\ authority\_groups[2].str();}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!userMatch.empty())\ \{}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ authority\_components\_map[authority\_components::username]\ =\ userMatch;}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ has\_username\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ passMatch\ =\ authority\_groups[4].str();}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!passMatch.empty())\ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ authority\_components\_map[authority\_components::password]\ =\ passMatch;}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ has\_password\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ hostMatch\ =\ authority\_groups[5].str();}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ authority\_components\_map[authority\_components::host]\ =\ hostMatch;}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(authority\_components\_map[authority\_components::host][0]\ ==\ \textcolor{charliteral}{'['})\ isIPv6Host\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ portMatch\ =\ authority\_groups[7].str();}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!portMatch.empty())\ \{}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ authority\_components\_map[authority\_components::port]\ =\ portMatch;}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ has\_port\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\_absolute\_uri\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\_relative\_uri\ =\ std::regex\_match(href,\ uri\_groups,\ relative\_uri\_regex);}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!is\_relative\_uri)\ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}The\ provided\ href\ is\ not\ a\ valid\ absolute\ or\ relative\ URI"{}});}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ pathMatch\ =\ uri\_groups[1].str();}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!pathMatch.empty())\ \{}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ relative\_uri\_components\_map[relative\_uri\_components::path]\ =\ pathMatch;}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ queryMatch\ =\ uri\_groups[2].str();}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!queryMatch.empty())\ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ relative\_uri\_components\_map[relative\_uri\_components::query]\ =\ queryMatch;}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ has\_query\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ fragmentMatch\ =\ uri\_groups[3].str();}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!fragmentMatch.empty())\ \{}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ relative\_uri\_components\_map[relative\_uri\_components::fragment]\ =\ fragmentMatch;}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ has\_fragment\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{classuripp_1_1_uri_a035b74aeae8ca0f51a0d10226b5351c0}{getHref}}()\ \{}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ href;}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{classuripp_1_1_uri_a7643851be79a30715673f0a39a9b950d}{getScheme}}()\ \{}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(is\_relative\_uri)\ \textcolor{keywordflow}{throw}\ std::domain\_error(\textcolor{stringliteral}{"{}Cannot\ use\ with\ relative\ URI"{}});}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ uri\_components\_map[absolute\_uri\_components::scheme];}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{classuripp_1_1_uri_afe01dda055f72b8875a2987b5bfb64fb}{getAuthority}}()\ \{}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(has\_authority)\ }
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ uri\_components\_map[absolute\_uri\_components::authority];}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ }
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::domain\_error(\textcolor{stringliteral}{"{}Cannot\ get\ authority\ of\ a\ relative\ URI"{}});}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{classuripp_1_1_uri_ad124827d164a6cc7f0a8383af0dfc57d}{getPath}}()\ \{}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_absolute\_uri)\ \{}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ uri\_components\_map[absolute\_uri\_components::path];}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (is\_relative\_uri)\ \{}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ relative\_uri\_components\_map[relative\_uri\_components::path];}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{classuripp_1_1_uri_aea0db1be26ffce665c9187403824c358}{getQuery}}()\ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_absolute\_uri\ \&\&\ has\_query)\ \{}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ uri\_components\_map[absolute\_uri\_components::query];}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (is\_relative\_uri\ \&\&\ has\_query)\ \{}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ relative\_uri\_components\_map[relative\_uri\_components::query];}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{classuripp_1_1_uri_ac3629bc4e866123891074f77b2396d36}{getFragment}}()\ \{}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_absolute\_uri\ \&\&\ has\_fragment)\ \{}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ uri\_components\_map[absolute\_uri\_components::fragment];}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (is\_relative\_uri\ \&\&\ has\_fragment)\ \{}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ relative\_uri\_components\_map[relative\_uri\_components::fragment];}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ std::map<absolute\_uri\_components,\ std::string>*\ \mbox{\hyperlink{classuripp_1_1_uri_a1813aa80e5c0ce48b05ba1d304622cc0}{getURIComponents}}()\ \{}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(is\_absolute\_uri)\ \{}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&uri\_components\_map;}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::domain\_error(\textcolor{stringliteral}{"{}Cannot\ use\ with\ relative\ URI"{}});}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00269\ }
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ std::map<relative\_uri\_components,\ std::string>*\ \mbox{\hyperlink{classuripp_1_1_uri_aac39fbad03ec3edc71f346bbcee2598b}{getRelativeURIComponents}}()\ \{}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(is\_relative\_uri)\ \{}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&relative\_uri\_components\_map;}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::domain\_error(\textcolor{stringliteral}{"{}Cannot\ use\ with\ absolute\ URI"{}});}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00283\ }
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{classuripp_1_1_uri_adb09fc51ab2bf696d7a4a10148a45200}{getUsername}}()\ \{}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(is\_relative\_uri)\ \textcolor{keywordflow}{throw}\ std::domain\_error(\textcolor{stringliteral}{"{}Cannot\ use\ with\ relative\ URI"{}});}
+\DoxyCodeLine{00292\ }
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(has\_username)\ }
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ authority\_components\_map[authority\_components::username];}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ }
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00298\ }
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{classuripp_1_1_uri_ab117cf0c22f20503b48ff3b89342c5fb}{getPassword}}()\ \{}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(is\_relative\_uri)\ \textcolor{keywordflow}{throw}\ std::domain\_error(\textcolor{stringliteral}{"{}Cannot\ use\ with\ relative\ URI"{}});}
+\DoxyCodeLine{00307\ }
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(has\_password)\ }
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ authority\_components\_map[authority\_components::password];}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ }
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00313\ }
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{classuripp_1_1_uri_a5c3d000943c11338ae3d7711504ec622}{getHost}}()\ \{}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(is\_relative\_uri)\ \textcolor{keywordflow}{throw}\ std::domain\_error(\textcolor{stringliteral}{"{}Cannot\ use\ with\ relative\ URI"{}});}
+\DoxyCodeLine{00322\ }
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(has\_authority)\ }
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ authority\_components\_map[authority\_components::host];}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ }
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00328\ }
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{classuripp_1_1_uri_a9cf05497eaa3ed45059dbf719a1fdf43}{getPort}}()\ \{}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(is\_relative\_uri)\ \textcolor{keywordflow}{throw}\ std::domain\_error(\textcolor{stringliteral}{"{}Cannot\ use\ with\ relative\ URI"{}});}
+\DoxyCodeLine{00337\ }
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(has\_port)\ }
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ authority\_components\_map[authority\_components::port];}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ }
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00343\ }
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ std::map<authority\_components,\ std::string>*\ \mbox{\hyperlink{classuripp_1_1_uri_afa66d1a3397892214b3c3cca7b31c9d8}{getAuthorityComponents}}()\ \{}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(is\_relative\_uri)\ \textcolor{keywordflow}{throw}\ std::domain\_error(\textcolor{stringliteral}{"{}Cannot\ use\ with\ relative\ URI"{}});}
+\DoxyCodeLine{00352\ }
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(is\_absolute\_uri\ \&\&\ has\_authority)\ \{}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&authority\_components\_map;}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ }
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00360\ }
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classuripp_1_1_uri_ae01437950bf19fb945823b33e65ba895}{hasAuthority}}()\ \{}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ has\_authority;}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00370\ }
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classuripp_1_1_uri_a0107bcfb9b6ed50aff279e730baff69b}{hasQuery}}()\ \{}
+\DoxyCodeLine{00378\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ has\_query;}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00380\ }
+\DoxyCodeLine{00381\ }
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classuripp_1_1_uri_a79c077349d433a2b457041afe141e9a5}{hasFragment}}()\ \{}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ has\_fragment;}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classuripp_1_1_uri_a8588ce62ec219fe9ef55b5961f07afeb}{hasUsername}}()\ \{}
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ has\_username;}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00401\ }
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classuripp_1_1_uri_a873974ed8ff0006b6cbb4ed4a3e8e077}{hasPassword}}()\ \{}
+\DoxyCodeLine{00409\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ has\_password;}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00411\ }
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classuripp_1_1_uri_adf0b1d0f415f101db3ebdfbe39c04e6d}{hasPort}}()\ \{}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ has\_port;}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00421\ }
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classuripp_1_1_uri_a350423cb53f2a9841ef824754ee20b4b}{isRelativeUri}}()\ \{}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ is\_relative\_uri;}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00431\ }
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classuripp_1_1_uri}{Uri}}()\ \{}
+\DoxyCodeLine{00434\ }
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00436\ }
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ std::string\ href\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00438\ }
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ std::regex\ uri\_regex\ =\ std::regex(\textcolor{stringliteral}{"{}\string^(([\string^:/?\#]+):)?(\(\backslash\)\(\backslash\)/\(\backslash\)\(\backslash\)/([\string^/?\#]*))?([\string^?\#]*)(\(\backslash\)\(\backslash\)?([\string^\#]*))?(\#(.*))?"{}},\ std::regex\_constants::ECMAScript);}
+\DoxyCodeLine{00440\ }
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ std::regex\ authority\_regex\ =\ std::regex(\textcolor{stringliteral}{"{}\string^(([\string^@]+)(:([\string^@]+))@)?(\(\backslash\)\(\backslash\)[[\string^\(\backslash\)\(\backslash\)]]+\(\backslash\)\(\backslash\)]|[\string^:\(\backslash\)\(\backslash\)[\(\backslash\)\(\backslash\)]]+)(:(\(\backslash\)\(\backslash\)d+))?\$"{}},\ std::regex\_constants::ECMAScript);}
+\DoxyCodeLine{00442\ }
+\DoxyCodeLine{00443\ \ \ \ \ \ \ \ \ std::regex\ relative\_uri\_regex\ =\ std::regex(\textcolor{stringliteral}{"{}\string^((?:\(\backslash\)\(\backslash\)/\(\backslash\)\(\backslash\)/(?:[A-\/Za-\/z0-\/9\(\backslash\)\(\backslash\)-\/.\_\string~\%!\$\&'()*+,;=:@]*)(?:\(\backslash\)\(\backslash\)/(?:[A-\/Za-\/z0-\/9\(\backslash\)\(\backslash\)-\/.\_\string~\%!\$\&'()*+,;=:@]*))*)|(?:\(\backslash\)\(\backslash\)/(?:[A-\/Za-\/z0-\/9\(\backslash\)\(\backslash\)-\/.\_\string~\%!\$\&'()*+,;=:@]+(?:\(\backslash\)\(\backslash\)/(?:[A-\/Za-\/z0-\/9\(\backslash\)\(\backslash\)-\/.\_\string~\%!\$\&'()*+,;=:@]*))*))|(?:[A-\/Za-\/z0-\/9\(\backslash\)\(\backslash\)-\/.\_\string~\%!\$\&'()*+,;=@]+(?:\(\backslash\)\(\backslash\)/(?:[A-\/Za-\/z0-\/9\(\backslash\)\(\backslash\)-\/.\_\string~\%!\$\&'()*+,;=:@]*))*))?(\(\backslash\)\(\backslash\)?[A-\/Za-\/z0-\/9\(\backslash\)\(\backslash\)-\/.\_\string~\%!\$\&'()*+,;=:@\(\backslash\)\(\backslash\)/\(\backslash\)\(\backslash\)?]*)?(\(\backslash\)\(\backslash\)\#[A-\/Za-\/z0-\/9\(\backslash\)\(\backslash\)-\/.\_\string~\%!\$\&'()*+,;=:@\(\backslash\)\(\backslash\)/\(\backslash\)\(\backslash\)?]*)?\$"{}});}
+\DoxyCodeLine{00444\ }
+\DoxyCodeLine{00445\ \ \ \ \ \ \ \ \ std::map<absolute\_uri\_components,\ std::string>\ uri\_components\_map\ =\ \{\{absolute\_uri\_components::scheme,\ \textcolor{stringliteral}{"{}"{}}\},\ \{absolute\_uri\_components::path,\ \textcolor{stringliteral}{"{}"{}}\}\};}
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ std::map<authority\_components,\ std::string>\ authority\_components\_map;}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ std::map<relative\_uri\_components,\ std::string>\ relative\_uri\_components\_map;}
+\DoxyCodeLine{00448\ }
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_absolute\_uri\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_relative\_uri\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00451\ }
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ has\_authority\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ has\_query\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ has\_fragment\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00455\ }
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isIPv6Host\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ has\_username\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ has\_password\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ has\_port\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00460\ \ \ \ \ \};}
+\DoxyCodeLine{00461\ }
+\DoxyCodeLine{00466\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classuripp_1_1_uri_builder_config}{UriBuilderConfig}}\ \{}
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classuripp_1_1_uri_builder_config}{UriBuilderConfig}}()\ \{}
+\DoxyCodeLine{00469\ }
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00471\ }
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ std::string\ scheme\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ std::string\ authority\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ std::string\ path\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ std::string\ query\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \ \ std::string\ fragment\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00477\ }
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ std::string\ username\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ std::string\ password\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ std::string\ host\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ std::string\ port\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00482\ }
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_hierarchical\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ non\_hierarchical\_delimiter\ =\ \textcolor{charliteral}{':'};}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ query\_delimiter\ =\ \textcolor{charliteral}{','};}
+\DoxyCodeLine{00486\ \ \ \ \ \};}
+\DoxyCodeLine{00487\ }
+\DoxyCodeLine{00492\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classuripp_1_1_uri_builder}{UriBuilder}}\ \{}
+\DoxyCodeLine{00493\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00494\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classuripp_1_1_uri}{Uri}}*\ build(\mbox{\hyperlink{classuripp_1_1_uri_builder_config}{UriBuilderConfig}}\ config)\ \{}
+\DoxyCodeLine{00495\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ href\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00496\ }
+\DoxyCodeLine{00497\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!config.scheme.empty())\ \{}
+\DoxyCodeLine{00498\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ href\ +=\ config.scheme;}
+\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ href\ +=\ config.is\_hierarchical\ ?\ \textcolor{stringliteral}{"{}://"{}}\ :\ \textcolor{stringliteral}{"{}:"{}};}
+\DoxyCodeLine{00500\ }
+\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!config.authority.empty())\ \{}
+\DoxyCodeLine{00502\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ href\ +=\ config.authority;}
+\DoxyCodeLine{00503\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00504\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Construct\ Authority\ out\ of\ components}}
+\DoxyCodeLine{00505\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ authority\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00506\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ authority\ +=\ config.username;}
+\DoxyCodeLine{00507\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ authority\ +=\ authority.empty()\ ?\ \textcolor{stringliteral}{"{}:"{}}+config.password\ :\ \textcolor{stringliteral}{"{}"{}};\ \textcolor{comment}{//\ add\ password\ only\ if\ username\ is\ available}}
+\DoxyCodeLine{00508\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ authority\ +=\ authority.empty()\ ?\ \textcolor{stringliteral}{"{}@"{}}\ :\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00509\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ authority\ +=\ config.host;}
+\DoxyCodeLine{00510\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ authority\ +=\ \textcolor{stringliteral}{"{}:"{}}+config.port;}
+\DoxyCodeLine{00511\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ href\ +=\ authority;}
+\DoxyCodeLine{00512\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00514\ }
+\DoxyCodeLine{00515\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!href.empty())\ \{}
+\DoxyCodeLine{00516\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ starts\_with\_delimiter\ =\ config.is\_hierarchical\ ?\ config.path[0]\ ==\ \textcolor{charliteral}{'/'}\ :\ config.path[0]\ ==\ config.non\_hierarchical\_delimiter;}
+\DoxyCodeLine{00517\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ href\ +=\ config.is\_hierarchical\ \&\&\ !starts\_with\_delimiter\ \&\&\ href[href.size()-\/1]\ !=\ \textcolor{charliteral}{'/'}\ ?\ \ \textcolor{stringliteral}{"{}/"{}}\ :\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00518\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00519\ }
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ \ \ \ \ href\ +=\ config.path;}
+\DoxyCodeLine{00521\ \ \ \ \ \ \ \ \ \ \ \ \ href\ +=\ \textcolor{stringliteral}{"{}?"{}}+config.query;}
+\DoxyCodeLine{00522\ \ \ \ \ \ \ \ \ \ \ \ \ href\ +=\ \textcolor{stringliteral}{"{}\#"{}}+config.fragment;}
+\DoxyCodeLine{00523\ }
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Building\ URI\ for\ href:\ "{}}\ <<\ href\ <<\ std::endl;\ }
+\DoxyCodeLine{00525\ }
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classuripp_1_1_uri}{Uri}}(href);}
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00528\ \ \ \ \ \};}
+\DoxyCodeLine{00529\ \}}
+
+\end{DoxyCode}
