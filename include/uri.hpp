@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <map>
+#include <ostream>
 #include <regex>
 #include <stdexcept>
 #include <string>
@@ -172,6 +173,10 @@ namespace uripp {
                     has_fragment = true;
                 }
             }
+        }
+
+        Uri(const Uri& other) {
+            Uri(other.href);
         }
 
         /**
@@ -427,6 +432,18 @@ namespace uripp {
          */
         bool isRelativeUri() {
             return is_relative_uri;
+        }
+
+        /**
+         * @brief << Operator overload
+         * 
+         * @param os output stream
+         * @param uri Uri object
+         * @return std::ostream& output stream with added href
+         */
+        friend std::ostream& operator<<(std::ostream& os, const Uri& uri) { 
+            os << uri.href;
+            return os;
         }
 
         private:
