@@ -11,12 +11,12 @@ int main() {
    config.path = "path/to/home";
    config.fragment = "fragment";
 
-   uripp::Uri* uri = uripp::UriBuilder::build(config);
+   uripp::Uri* p_uri = uripp::UriBuilder::build(config);
+   uripp::Uri uri = *p_uri;
 
-   // uripp::Uri uri = uripp::Uri("./hi/hello?query=yes#fragment");
-   auto absolute_parts = !uri->isRelativeUri() ? uri->getURIComponents() : nullptr;
-   auto relative_parts = uri->isRelativeUri() ? uri->getRelativeURIComponents() : nullptr;
-   auto authorityParts = !uri->isRelativeUri() && uri->hasAuthority() ? uri->getAuthorityComponents() : nullptr;
+   auto absolute_parts = !p_uri->isRelativeUri() ? p_uri->getURIComponents() : nullptr;
+   auto relative_parts = p_uri->isRelativeUri() ? p_uri->getRelativeURIComponents() : nullptr;
+   auto authorityParts = !p_uri->isRelativeUri() && p_uri->hasAuthority() ? p_uri->getAuthorityComponents() : nullptr;
 
    if (absolute_parts != nullptr) {
       for(auto it = absolute_parts->begin(); it != absolute_parts->end(); it++) {
@@ -36,5 +36,8 @@ int main() {
       }
    }
 
-    return 0;
+   
+   std::cout << std::endl << uri;
+
+   return 0;
 }
